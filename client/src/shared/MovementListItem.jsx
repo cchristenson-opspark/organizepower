@@ -23,24 +23,10 @@ const MovementListItem = ({ movement }) => {
         <img className="object-contain h-full w-48" src={imageUrl} alt={name} />
       </div>
       <div>
-<<<<<<< HEAD
         <Link to="/movement">
           Movement Title:
           {name}
         </Link>
-=======
-        <div onClick={handleClick}>
-          Movement Title:
-          {name}
-        </div>
-        {showComponents
-          ? (
-            <Router>
-              <Redirect to="/movement" render={() => (<Movement movement={movement} />)} />
-            </Router>
-          )
-          : null}
->>>>>>> d299162557d84d3de46cc0aa984d46f90fae5717
         <p>
           Location:
           {location}
@@ -61,7 +47,7 @@ const MovementListItem = ({ movement }) => {
     </div>
   );
 };
-
+// comment 
 /* Tailwind Card Example from Docs
 <div className="max-w-sm w-full lg:max-w-full lg:flex">
 <div className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style={cardImageStyle} title={name} />
