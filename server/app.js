@@ -51,6 +51,7 @@ app.use(passport.initialize());
 // the session id (from the client cookie) into the true deserialized user object
 app.use(passport.session());
 
+// this is the passport strategy used to authenticate users
 passport.use(new LocalStrategy(
   (username, password, cb) => {
     User.findOne({ where: { username } })
@@ -58,6 +59,7 @@ passport.use(new LocalStrategy(
         if (!user) {
           return cb(null, false);
         }
+        // this function does some magic to verify a users credentials
         if (validPassword(password, user.hash, user.salt)) {
           return cb(null, user);
         }
@@ -69,10 +71,11 @@ passport.use(new LocalStrategy(
   },
 ));
 
+// these two methods are responsible for establishing the user in the session object
 passport.serializeUser((user, cb) => {
   cb(null, user.id);
 });
-
+// deserializing is the process of pulling the users session info from the session object
 passport.deserializeUser((id, cb) => {
   User.findOne({ where: { id } })
     .then((user) => {
